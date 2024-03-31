@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_trainee_test/cubit/product_cubit_cubit.dart';
 import 'package:flutter_trainee_test/view/home_view.dart';
 
 void main() {
@@ -16,7 +18,10 @@ class MyApp extends StatelessWidget {
           color: Colors.black,
         ),
       ),
-      home: MyHomePage(),
+      home: BlocProvider(
+        create: (context) => ProductCubitCubit(),
+        child: const MyHomePage(),
+      ),
     );
   }
 }

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_trainee_test/model/ProductDataModel.dart';
+import 'package:flutter_trainee_test/model/product/product.dart';
 import 'package:flutter_trainee_test/repository/product_data_repo.dart';
 
 import 'detailScreen.dart';
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
   @override
+  // ignore: library_private_types_in_public_api
   _MyHomePageState createState() => _MyHomePageState();
 }
 
@@ -24,12 +27,13 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          const Icon(
+        actionsIconTheme: IconThemeData(color: Colors.white),
+        actions: const [
+          Icon(
             Icons.shopping_bag,
             color: Colors.white,
           ),
-          const Icon(
+          Icon(
             Icons.more_vert_rounded,
             color: Colors.white,
           ),
@@ -68,22 +72,22 @@ class _MyHomePageState extends State<MyHomePage> {
                       children: [
                         Expanded(
                           child: Image.network(
-                            productList[index].image,
+                            productList[index].image.toString(),
                             fit: BoxFit.cover,
                           ),
                         ),
                         Text(
-                          productList[index].title,
+                          productList[index].title.toString(),
                           style: const TextStyle(fontWeight: FontWeight.bold),
                           overflow: TextOverflow.ellipsis,
                           maxLines: 2,
                         ),
                         Text(
-                          productList[index].category,
+                          productList[index].category.toString(),
                           overflow: TextOverflow.ellipsis,
                         ),
                         Text(
-                          '\$${productList[index].price.toStringAsFixed(2)}',
+                          '\$${productList[index].price.toString()}',
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         )
                       ],
